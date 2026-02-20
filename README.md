@@ -23,11 +23,45 @@ If you see a version number (e.g. `v20.x.x`), skip to step 2. Otherwise, install
 2. Go to **Settings → API Keys**
 3. Create a new API key and copy it
 
-### 3. Add to Claude Desktop
+### 3. Install the MCP server
+
+Copy and paste this into **Terminal** — it downloads the server and builds it:
+
+```sh
+git clone https://github.com/OnboardedInc/onboarded-public-mcp.git ~/.onboarded-mcp && cd ~/.onboarded-mcp && npm install && npm run build && echo "\n✅ Installed! Now add to Claude Desktop (see next step)."
+```
+
+### 4. Add to Claude Desktop
 
 1. Open Claude Desktop
 2. Go to **Settings → Developer → Edit Config**
 3. Add the following to your config file:
+
+```json
+{
+  "mcpServers": {
+    "onboarded": {
+      "command": "node",
+      "args": ["~/.onboarded-mcp/dist/index.js"],
+      "env": {
+        "ONBOARDED_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
+
+> **⚠️ macOS users**: Replace `~/.onboarded-mcp` with the full path. To get it, run `echo $HOME/.onboarded-mcp` in Terminal, then use that in the config above.
+
+4. Replace `your-api-key-here` with your actual API key
+5. Save and restart Claude Desktop
+
+That's it! Claude can now manage your Onboarded account.
+
+<details>
+<summary><strong>Alternative: Install via npm (once published)</strong></summary>
+
+Once this package is published to npm, setup is even simpler — no clone needed:
 
 ```json
 {
@@ -43,10 +77,7 @@ If you see a version number (e.g. `v20.x.x`), skip to step 2. Otherwise, install
 }
 ```
 
-4. Replace `your-api-key-here` with your actual API key
-5. Save and restart Claude Desktop
-
-That's it! Claude can now manage your Onboarded account.
+</details>
 
 ## What you can do
 
