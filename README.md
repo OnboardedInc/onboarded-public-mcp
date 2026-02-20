@@ -37,6 +37,8 @@ git clone https://github.com/OnboardedInc/onboarded-public-mcp.git ~/.onboarded-
 2. Go to **Settings → Developer → Edit Config**
 3. Add the following to your config file:
 
+**For production:**
+
 ```json
 {
   "mcpServers": {
@@ -45,6 +47,23 @@ git clone https://github.com/OnboardedInc/onboarded-public-mcp.git ~/.onboarded-
       "args": ["~/.onboarded-mcp/dist/index.js"],
       "env": {
         "ONBOARDED_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
+
+**For staging:**
+
+```json
+{
+  "mcpServers": {
+    "onboarded": {
+      "command": "node",
+      "args": ["~/.onboarded-mcp/dist/index.js"],
+      "env": {
+        "ONBOARDED_API_KEY": "your-api-key-here",
+        "ONBOARDED_BASE_URL": "https://staging.onboarded.com"
       }
     }
   }
@@ -116,7 +135,7 @@ Ask Claude things like:
 | Environment Variable | Required | Default | Description |
 |---|---|---|---|
 | `ONBOARDED_API_KEY` | Yes | — | Your Onboarded API key |
-| `ONBOARDED_BASE_URL` | No | `https://app.onboarded.com` | API base URL |
+| `ONBOARDED_BASE_URL` | No | `https://app.onboarded.com` | `https://app.onboarded.com` (production) or `https://staging.onboarded.com` (staging) |
 
 ## For developers
 
