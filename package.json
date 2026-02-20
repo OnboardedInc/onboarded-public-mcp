@@ -1,0 +1,39 @@
+{
+  "name": "@onboarded/mcp-server",
+  "version": "0.1.0",
+  "description": "MCP server for the Onboarded public API — manage employees, placements, tasks, and more",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "onboarded-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "generate": "tsx scripts/generate-tools.ts",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "onboarded",
+    "api",
+    "model-context-protocol",
+    "claude"
+  ],
+  "author": "Onboarded Inc",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.2"
+  }
+}
